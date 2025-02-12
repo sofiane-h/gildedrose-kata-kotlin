@@ -263,4 +263,40 @@ internal class GildedRoseTest {
             }
         )
     }
+
+    @Test
+    fun `Test that a Conjured decreases its quality twice as fast than classic items`() {
+        // Given
+        val items = listOf(
+            Item("Conjured", 10, 20),
+        )
+
+        // When
+        val numberOfDays = 4
+        val app = GildedRose(items)
+        for (i in 0 until numberOfDays) {
+            app.updateQuality()
+        }
+
+        // Then
+        assertEquals(items[0].quality, 12)
+    }
+
+    @Test
+    fun `Test that a Conjured with negative sellIn date will decrease its quality four times faster than classic items`() {
+        // Given
+        val items = listOf(
+            Item("Conjured", -1, 20),
+        )
+
+        // When
+        val numberOfDays = 4
+        val app = GildedRose(items)
+        for (i in 0 until numberOfDays) {
+            app.updateQuality()
+        }
+
+        // Then
+        assertEquals(items[0].quality, 4)
+    }
 }
