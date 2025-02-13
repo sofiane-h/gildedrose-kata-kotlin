@@ -1,7 +1,7 @@
 # Gilded Rose Refactoring Kata
 
 This project is my solution of the Gilded Rose Refactoring Kata. 
-I have made it in Kotlin, this is why I just cloned the original [GitHub project](https://github.com/emilybache/GildedRose-Refactoring-Kata) and only keep the kotlin files and tests related stuff.
+I have made it in Kotlin, this is why I cloned the original [GitHub project](https://github.com/emilybache/GildedRose-Refactoring-Kata) and only keep the Kotlin files and tests related stuff.
 
 ## Requirements
 See [Gilded Rose Requirements Specification](GildedRoseRequirements.md) file for more information.
@@ -10,15 +10,15 @@ See [Gilded Rose Requirements Specification](GildedRoseRequirements.md) file for
 ### Understand the existing code
 Firstly, I took a look at the `GildedRose` with its _messy_ `updateQuality()` function.
 There were a lot of nested if/else, so to clarify everything and be sure that I didn't miss anything, I decided to add some comments on almost each condition.
-This way, I can have a better understanding of what this function do and if the logic follows the requirements.
+This way, I can have a better understanding of what this function does and if the logic follows the requirements.
 
 ### Unit Tests
-Then, I added some unit test, just to be sure that I will not break anything when I will do my refactoring.
+Then, I added some unit tests, just to be sure that I will not break anything when I will do my refactoring.
 I also added some tests for the new Conjured item which will at first fail as the logic has not been implemented yet.
 
 ### Refactoring
 The next step is the actual refactoring.
-In my point of view, it was pretty clear that each item has their own strategy to update their quality value.
+From my point of view, it was pretty clear that each item has their own strategy to update their quality value.
 This is why I decided to go for a strategy design pattern _-like_.
 
 Thus, I created an `InventoryItem` which has an `Item` and two functions to update its `quality` and `sellIn` value.
@@ -46,7 +46,7 @@ val item = ClassicItem(Item(name = "AgedBrie", sellIn = 10, quality = 10))
 ```
 
 ## Backstage item issue
-There is, in my point of view, something not clear about the "Backstage passes" item regarding its requirement.
+There is, from my point of view, something not clear about the "Backstage passes" item regarding its requirement.
 If we look at the [GildedRoseRequirements](GildedRoseRequirements.md) we can read:
 >"Backstage passes", like aged brie, increases in Quality as its SellIn value approaches;
 > - Quality increases by 2 when there are **10 days or less** and by 3 when there are 5 days or less but
